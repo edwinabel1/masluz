@@ -10,7 +10,7 @@ const s3 = new AWS.S3({
 
 export async function GET(request) {
   const params = {
-    Bucket: process.env.R2_BUCKET_NAME,
+    Bucket: process.env.R2_BUCKET_NAME_RECORDINGS,
   };
 
   try {
@@ -18,7 +18,7 @@ export async function GET(request) {
     const files = data.Contents.map(item => ({
       key: item.Key,
       url: s3.getSignedUrl('getObject', {
-        Bucket: process.env.R2_BUCKET_NAME,
+        Bucket: process.env.R2_BUCKET_NAME_RECORDINGS,
         Key: item.Key,
         Expires: 60 * 60,
       }),

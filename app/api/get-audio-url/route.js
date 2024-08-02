@@ -14,7 +14,7 @@ export async function GET(request) {
   const file = searchParams.get('file');
 
   const params = {
-    Bucket: process.env.R2_BUCKET_NAME,
+    Bucket: process.env.R2_BUCKET_NAME_RECORDINGS,
     Key: file,
     Expires: 60 * 60,
   };
